@@ -15,24 +15,36 @@ document.addEventListener('DOMContentLoaded', () => {
     let currentPage = 1;
     const itemsPerPage = 6;
 
-    // 从后端接口获取数据
-    fetch('https://xlkpproject1-7b8qcyfz1-zixi-jiangs-projects.vercel.app//patterns')
-        .then(response => {
-            if (!response.ok) {
-                throw new Error('Network response was not ok ' + response.statusText);
-            }
-            return response.json();
-        })
-        .then(data => {
-            originalPatterns = data; // 存储原始数据
-            patterns = data; // 初始化 patterns 为原始数据
-            renderPatterns(currentPage);
-            renderPagination();
-        })
-        .catch(error => {
-            console.error('Error fetching data:', error);
-            alert('Error fetching data: ' + error.message);
+    const patterns = [
+        {
+            name: '扎土盖',
+            image: 'images/zatuogai.jpg',
+            story: '土家人崇拜太阳，以农历六月初六为太阳的生辰，太阳河流域，不仅是土家文化的故乡，土家织锦也在这里生息发展，土家族人对火的崇拜则是对太阳崇拜的延伸，户户都设有“火床”太阳是正神之祖，象征光明、正气、吉祥。火可以驱邪，保护人间不受邪鬼骚扰。所以，象征太阳和火的“十”在土家民俗中普遍被重视，也是处处事事不可少的文化符号。“扎土盖”的最初本意显然是一个带有原始宗教信仰和道、佛宗教内含的双重图纹形态，它与太阳崇拜及太极图是一脉相承的，象征光明、正中，吉祥，生生不息的卐及其变异，更普遍和直接的大量用于土家织锦中，并表现得淋漓尽致。卐既可单独成型，作为主体图纹使用，也可将其分解成各种勾纹，大量作为陪衬和填充物，成为土家织锦中突出的装饰特征之一。'
+        },
+        // 其他纹样数据...
+    ];
+
+    patterns
+.forEach(pattern => {
+        const img = document.createElement('img');
+        img
+.src = pattern.image;
+        img
+.alt = pattern.name;
+        img
+.classList.add('pattern-image');
+        img
+.addEventListener('click', () => {
+            patternName
+.textContent = pattern.name;
+            patternStory
+.textContent = pattern.story;
+            storyModal
+.style.display = 'block';
         });
+        patternContainer
+.appendChild(img);
+    });
 
     // 搜索功能
     const performSearch = () => {
