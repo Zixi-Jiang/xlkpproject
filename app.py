@@ -1,5 +1,10 @@
+from flask import Flask, jsonify
+from flask_cors import CORS
 import os
 import mysql.connector
+
+app = Flask(__name__)
+CORS(app)
 
 def get_patterns():
     db_config = {
@@ -15,3 +20,14 @@ def get_patterns():
     cursor.close()
     conn.close()
     return patterns
+
+@app.route('/patterns', methods=['GET'])
+def patterns():
+    try:
+        patterns = get_patterns()
+        return jsonify(patterns)
+    except Exception as e:
+        return jsonify({"error": str(e)}), 500
+
+if __name__ == '__main__':
+    app.run(debug=True)
