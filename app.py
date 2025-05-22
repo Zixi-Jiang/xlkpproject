@@ -3,10 +3,10 @@ import mysql.connector
 
 def get_patterns():
     db_config = {
-        'host': os.getenv('DATABASE_HOST', 'localhost'),
-        'user': os.getenv('DATABASE_USER', 'root'),
-        'password': os.getenv('DATABASE_PASSWORD', 'Mysql:112358'),
-        'database': os.getenv('DATABASE_NAME', 'xilan_kapu')
+        'host': os.getenv('MYSQLHOST'),
+        'user': os.getenv('MYSQLUSER'),
+        'password': os.getenv('MYSQLPASSWORD'),
+        'database': os.getenv('MYSQLDATABASE')
     }
     conn = mysql.connector.connect(**db_config)
     cursor = conn.cursor(dictionary=True)
