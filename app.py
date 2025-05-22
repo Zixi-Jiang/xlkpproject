@@ -6,7 +6,7 @@ def get_patterns():
         'host': os.getenv('mysql.railway.internal'),
         'user': os.getenv('root'),
         'password': os.getenv('RIeDpcEJUEPzlunnHczZcoflosDYZWSY'),
-        'database': os.getenv('railway')
+        'database': os.getenv('patterns')
     }
     conn = mysql.connector.connect(**db_config)
     cursor = conn.cursor(dictionary=True)
