@@ -16,7 +16,7 @@ document.addEventListener('DOMContentLoaded', () => {
     const itemsPerPage = 6;
 
     // 从后端接口获取数据
-    fetch('http://xlkpproject1-o7e7ij26c-zixi-jiangs-projects.vercel.app/patterns')
+    fetch('https://xlkpproject1-7b8qcyfz1-zixi-jiangs-projects.vercel.app//patterns')
         .then(response => {
             if (!response.ok) {
                 throw new Error('Network response was not ok ' + response.statusText);
